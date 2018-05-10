@@ -1,0 +1,29 @@
+{
+    "name": "bantenprov/daftar-retribusi",
+    "description": "Dftar Retribusi",
+    "authors": [
+        {
+            "name": "bantenprov",
+            "email": "developer.bantenprov@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "support": {
+      "source": "https://github.com/bantenprov/daftar-retribusi,",
+      "issues": "https://github.com/bantenprov/daftar-retribusi/issues",
+      "wiki": "https://github.com/bantenprov/daftar-retribusi/wiki"
+    },
+    "require": {
+        "php": ">=7.0",
+        "illuminate/support": "5.5.*"
+    },
+    "autoload": {
+        "files": [
+            "src/helpers/helpers.php"
+        ],
+        "psr-4": {
+            "Bantenprov\\DafarRetribusi\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}
