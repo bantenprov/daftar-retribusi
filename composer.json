@@ -1,6 +1,6 @@
 {
     "name": "bantenprov/daftar-retribusi",
-    "description": "Dsftar Retribusi",
+    "description": "Daftar Retribusi",
     "authors": [
         {
             "name": "bantenprov",
@@ -22,7 +22,7 @@
             "src/helpers/helpers.php"
         ],
         "psr-4": {
-            "Bantenprov\\DafarRetribusi\\": "src"
+            "Bantenprov\\DaftarRetribusi\\": "src"
         }
     },
     "minimum-stability": "dev"
