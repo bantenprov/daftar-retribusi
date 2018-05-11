@@ -105,7 +105,7 @@ class DaftarRetribusiServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom($packageTranslationsPath, 'daftar-retribusi');
 
         $this->publishes([
-            $packageTranslationsPath => resource_path('lang/vendor/daftar-retribusi'),
+            $packageTranslationsPath => resource_path('lang/bantenprov/daftar-retribusi'),
         ], 'daftar-retribusi-lang');
     }
 
@@ -135,7 +135,7 @@ class DaftarRetribusiServiceProvider extends ServiceProvider
         $packageAssetsPath = __DIR__.'/resources/assets';
 
         $this->publishes([
-            $packageAssetsPath => public_path('vendor/daftar-retribusi'),
+            $packageAssetsPath => public_path('bantenprov/daftar-retribusi'),
         ], 'daftar-retribusi-public');
     }
 
