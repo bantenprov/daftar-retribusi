@@ -25,5 +25,15 @@
             "Bantenprov\\DaftarRetribusi\\": "src"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bantenprov\\DaftarRetribusi\\DaftarRetribusiServiceProvider"
+            ],
+            "aliases": {
+                "Menu": "Bantenprov\\DaftarRetribusi\\Facades\\DaftarRetribusi"
+            }
+        }
+    }
 }
