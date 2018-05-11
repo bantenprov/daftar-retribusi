@@ -7,7 +7,7 @@ use Bantenprov\DaftarRetribusi\Console\Commands\DaftarRetribusiCommand;
  * The DaftarRetribusiServiceProvider class
  *
  * @package Bantenprov\DaftarRetribusi
- * @author  feripratama <eroorsys@gmail.com>
+ * @author  bantenporv <developer.bantenprov@gmail.com>
  */
 class DaftarRetribusiServiceProvider extends ServiceProvider
 {
@@ -29,6 +29,7 @@ class DaftarRetribusiServiceProvider extends ServiceProvider
         // Bootstrap handles
         $this->routeHandle();
         $this->configHandle();
+        $this->langHandle();
         $this->viewHandle();
         $this->assetHandle();
         $this->migrationHandle();
@@ -89,7 +90,23 @@ class DaftarRetribusiServiceProvider extends ServiceProvider
 
         $this->publishes([
             $packageConfigPath => $appConfigPath,
-        ], 'config');
+        ], 'daftar-retribusi-config');
+    }
+
+    /**
+     * Loading and publishing package's translations
+     *
+     * @return void
+     */
+    protected function langHandle()
+    {
+        $packageTranslationsPath = __DIR__.'/resources/lang';
+
+        $this->loadTranslationsFrom($packageTranslationsPath, 'daftar-retribusi');
+
+        $this->publishes([
+            $packageTranslationsPath => resource_path('lang/vendor/daftar-retribusi'),
+        ], 'daftar-retribusi-lang');
     }
 
     /**
@@ -105,7 +122,7 @@ class DaftarRetribusiServiceProvider extends ServiceProvider
 
         $this->publishes([
             $packageViewsPath => resource_path('views/vendor/daftar-retribusi'),
-        ], 'views');
+        ], 'daftar-retribusi-views');
     }
 
     /**
@@ -119,7 +136,7 @@ class DaftarRetribusiServiceProvider extends ServiceProvider
 
         $this->publishes([
             $packageAssetsPath => public_path('vendor/daftar-retribusi'),
-        ], 'public');
+        ], 'daftar-retribusi-public');
     }
 
     /**
@@ -135,6 +152,6 @@ class DaftarRetribusiServiceProvider extends ServiceProvider
 
         $this->publishes([
             $packageMigrationsPath => database_path('migrations')
-        ], 'migrations');
+        ], 'daftar-retribusi-migrations');
     }
 }

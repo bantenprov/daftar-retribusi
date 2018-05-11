@@ -6,7 +6,7 @@ use Exception;
  * The DaftarRetribusiException class.
  *
  * @package Bantenprov\DaftarRetribusi
- * @author  feripratama <eroorsys@gmail.com>
+ * @author  bantenporv <developer.bantenprov@gmail.com>
  */
 class DaftarRetribusiException extends Exception
 {

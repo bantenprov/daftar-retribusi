@@ -1,5 +1,5 @@
 <?php
 
-Route::group(['prefix' => 'daftar-retribusi'], function() {
-    Route::get('demo', 'Bantenprov\DaftarRetribusi\Http\Controllers\DaftarRetribusiController@demo');
+Route::group(['prefix' => 'api','middleware' => ['web']], function() {
+    Route::resource('daftar-retribusi','Bantenprov\DaftarRetribusi\Http\Controllers\DaftarRetribusiController');
 });

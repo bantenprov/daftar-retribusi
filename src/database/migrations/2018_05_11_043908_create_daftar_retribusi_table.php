@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDaftarRetribusisTable extends Migration
+class CreateDaftarRetribusiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateDaftarRetribusisTable extends Migration
      */
     public function up()
     {
-        Schema::create('daftar_retribusis', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('daftar_retribusies', function (Blueprint $table) {
+            $table->primary('id');
+            $table->uuid('id');
+            $table->string('title');
+            $table->string('description');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +30,6 @@ class CreateDaftarRetribusisTable extends Migration
      */
     public function down()
     {
-        Schema::drop('daftar_retribusi');
+        Schema::drop('daftar_retribusies');
     }
 }
