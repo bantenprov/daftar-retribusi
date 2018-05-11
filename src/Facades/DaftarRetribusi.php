@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Facade;
  * The DaftarRetribusi facade.
  *
  * @package Bantenprov\DaftarRetribusi
- * @author  feripratama <eroorsys@gmail.com>
+ * @author  bantenporv <developer.bantenprov@gmail.com>
  */
 class DaftarRetribusi extends Facade
 {

@@ -6,7 +6,7 @@ use Closure;
  * The DaftarRetribusiMiddleware class.
  *
  * @package Bantenprov\DaftarRetribusi
- * @author  feripratama <eroorsys@gmail.com>
+ * @author  bantenporv <developer.bantenprov@gmail.com>
  */
 class DaftarRetribusiMiddleware
 {

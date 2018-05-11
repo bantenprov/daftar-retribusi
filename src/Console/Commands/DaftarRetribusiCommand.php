@@ -2,15 +2,28 @@
 
 use Illuminate\Console\Command;
 
-use File;
 /**
  * The DaftarRetribusiCommand class.
  *
  * @package Bantenprov\DaftarRetribusi
- * @author  feripratama <eroorsys@gmail.com>
+ * @author  bantenporv <developer.bantenprov@gmail.com>
  */
 class DaftarRetribusiCommand extends Command
 {
+
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'bantenprov:daftar-retribusi';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Demo command for Bantenprov\DaftarRetribusi package';
 
     /**
      * Create a new command instance.
@@ -29,10 +42,6 @@ class DaftarRetribusiCommand extends Command
      */
     public function handle()
     {
-        //
-    }
-
-    public function getStubFile($file){
-        return File::get($file);
+        $this->info('Welcome to command for Bantenprov\DaftarRetribusi package');
     }
 }
