@@ -121,7 +121,7 @@ class DaftarRetribusiServiceProvider extends ServiceProvider
         $this->loadViewsFrom($packageViewsPath, 'daftar-retribusi');
 
         $this->publishes([
-            $packageViewsPath => resource_path('views/vendor/daftar-retribusi'),
+            $packageViewsPath => resource_path('views/bantenprov/daftar-retribusi'),
         ], 'daftar-retribusi-views');
     }
 
