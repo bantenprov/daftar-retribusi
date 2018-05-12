@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Bantenprov\DaftarRetribusi\Facades\DaftarRetribusi;
 use Bantenprov\DaftarRetribusi\Models\DaftarRetribusiModel;
 use Ramsey\Uuid\Uuid;
+use Bantenprov\LaravelOpd\Models\LaravelOpdModel;
 
 /**
  * The DaftarRetribusiController class.
@@ -22,7 +23,8 @@ class DaftarRetribusiController extends Controller
      */
     public function index()
     {
-        $daftar_retribusies = DaftarRetribusiModel::all();
+        $daftar_retribusies = DaftarRetribusiModel::with('getOpd')->get();
+        
         
         return view('daftar-retribusi::index', compact('daftar_retribusies'));
     }
@@ -34,7 +36,9 @@ class DaftarRetribusiController extends Controller
      */
     public function create()
     {
-        return view('daftar-retribusi::create');
+        $opds = LaravelOpdModel::where('levelunker', '=', 1)->get();
+        
+        return view('daftar-retribusi::create', compact('opds'));
     }
 
     /**
@@ -46,16 +50,24 @@ class DaftarRetribusiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|min:3',
-            'description' => 'required',
+            'title'         => 'required|min:3',
+            'description'   => 'required',
+            'opd_id'        => 'required'
         ]);
+
+        $opd = LaravelOpdModel::find($request->opd_id);
+
+        if(is_null($opd)){
+            return redirect()->back()->withErrors('Can\'t find opd.');
+        }
         
 
         $daftar_retribusi = DaftarRetribusiModel::create(
                             [
-                                'id'    => Uuid::uuid5(Uuid::NAMESPACE_DNS, 'bantenprov.go.id'.date('YmdHis')),
-                                'title' => $request->title,
-                                'description' => $request->description
+                                'id'            => Uuid::uuid5(Uuid::NAMESPACE_DNS, 'bantenprov.go.id'.date('YmdHis')),
+                                'title'         => $request->title,
+                                'description'   => $request->description,
+                                'opd_id'        => $request->opd_id
                             ]);
         
                             
@@ -83,9 +95,11 @@ class DaftarRetribusiController extends Controller
      */
     public function edit($id)
     {
-        $daftar_retribusi = DaftarRetribusiModel::find($id);
+        $daftar_retribusi = DaftarRetribusiModel::with('getOpd')->find($id);
 
-        return view('daftar-retribusi::edit', compact('daftar_retribusi'));
+        $opds = LaravelOpdModel::where('levelunker', '=', 1)->get();
+
+        return view('daftar-retribusi::edit', compact('daftar_retribusi','opds'));
     }
 
     /**
@@ -98,13 +112,21 @@ class DaftarRetribusiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title' => 'required|min:3',
-            'description' => 'required',
+            'title'         => 'required|min:3',
+            'description'   => 'required',
+            'opd_id'        => 'required'
         ]);
+
+        $opd = LaravelOpdModel::find($request->opd_id);
+
+        if(is_null($opd)){
+            return redirect()->back()->withErrors('Can\'t find opd.');
+        }
         
         $daftar_retribusi = DaftarRetribusiModel::find($id);
-        $daftar_retribusi->title = $request->title;
-        $daftar_retribusi->description = $request->description;
+        $daftar_retribusi->title        = $request->title;
+        $daftar_retribusi->description  = $request->description;
+        $daftar_retribusi->opd_id       = $request->opd_id;
         $daftar_retribusi->save();
         
         return redirect()->route('daftar-retribusi.index')->with('message', 'Success update data.');

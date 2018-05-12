@@ -33,6 +33,7 @@ class DaftarRetribusiModel extends Model
         'id',
         'title',
         'description',
+        'opd_id'
     ];
 
     /**
@@ -41,4 +42,9 @@ class DaftarRetribusiModel extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function getOpd()
+    {
+        return $this->belongsTo('Bantenprov\LaravelOpd\Models\LaravelOpdModel','opd_id');
+    }
 }

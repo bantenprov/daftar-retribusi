@@ -23,6 +23,15 @@
 								<label for="description">Description</label>
 								<input type="text" value="{{$daftar_retribusi->description}}" class="form-control" id="taskDescription" name="description">
 							</div>
+              <div class="form-group">
+                <label for="opd_id">Level Unit Kerja {{ $daftar_retribusi->getOpd->name }}</label>
+                <select id="opd_id" name="opd_id" class="form-control form-control">
+                  <option value="">Please select</option>
+                  @foreach ($opds as $opd)
+                    <option value="{{$opd->id}}" {{ ($opd->id ==  $daftar_retribusi->opd_id) ? 'selected' : '' }}>{{$opd->name}}</option>    
+                  @endforeach                                   
+                </select>
+              </div>
 							@if ($errors->any())
 							<div class="alert alert-danger">
 								<ul>

@@ -23,6 +23,15 @@
               <label for="description">Description</label>
               <input type="text" class="form-control" id="daftarRetribusiDescription" name="description">
             </div>
+            <div class="form-group">
+              <label for="opd_id">Level Unit Kerja</label>
+              <select id="opd_id" name="opd_id" class="form-control form-control">
+                <option value="">Please select</option>
+                @foreach ($opds as $opd)
+                  <option value="{{$opd->id}}">{{$opd->name}}</option>    
+                @endforeach                                   
+              </select>
+            </div>
             @if ($errors->any())
             <div class="alert alert-danger">
               <ul>

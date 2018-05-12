@@ -12,7 +12,7 @@
           <div class="card-header">
             <i class="fa fa-align-justify"></i> Daftar Retribusi
             <a href="{{ route('daftar-retribusi.create') }}" class="float-right">
-              <button type="button" class="btn btn-warning">Add mew</button>
+              <button type="button" class="btn btn-warning">Add new</button>
             </a>&nbsp;
           </div>
           <div class="card-body">
@@ -22,6 +22,7 @@
                   <th scope="col">#</th>
                   <th scope="col">Title</th>
                   <th scope="col">Description</th>
+                  <th scope="col">OPD</th>
                   <th scope="col">Created At</th>
                   <th scope="col">Action</th>
                 </tr>
@@ -34,6 +35,7 @@
                     <a href="{{route('daftar-retribusi.show',$daftar_retribusi->id)}}">{{$daftar_retribusi->title}}</a>
                   </td>
                   <td>{{$daftar_retribusi->description}}</td>
+                  <td>{{$daftar_retribusi->getOpd->name}}</td>
                   <td>{{$daftar_retribusi->created_at->toFormattedDateString()}}</td>
                   <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
