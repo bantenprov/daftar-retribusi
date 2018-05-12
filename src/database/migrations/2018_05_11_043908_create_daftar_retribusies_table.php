@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDaftarRetribusiTable extends Migration
+class CreateDaftarRetribusiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,6 +16,7 @@ class CreateDaftarRetribusiTable extends Migration
         Schema::create('daftar_retribusies', function (Blueprint $table) {
             $table->primary('id');
             $table->uuid('id');
+            $table->uuid('opd_id')->index();
             $table->string('title');
             $table->string('description');
             $table->timestamps();
