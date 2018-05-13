@@ -20,8 +20,7 @@
               <thead class="thead-dark">
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Description</th>
+                  <th scope="col">Nama</th>
                   <th scope="col">OPD</th>
                   <th scope="col">Created At</th>
                   <th scope="col">Action</th>
@@ -32,9 +31,8 @@
                 <tr>
                   <th scope="row" uuid="{{$daftar_retribusi->id}}">{{ ++$key }}</th>
                   <td>
-                    <a href="{{route('daftar-retribusi.show',$daftar_retribusi->id)}}">{{$daftar_retribusi->title}}</a>
-                  </td>
-                  <td>{{$daftar_retribusi->description}}</td>
+                    <a href="{{route('daftar-retribusi.show',$daftar_retribusi->id)}}">{{$daftar_retribusi->nama}}</a>
+                  </td>                  
                   <td>{{$daftar_retribusi->getOpd->name}}</td>
                   <td>{{$daftar_retribusi->created_at->toFormattedDateString()}}</td>
                   <td>

@@ -11,11 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class DaftarRetribusiModel extends Model
 {
-    use SoftDeletes;
-
-    public $incrementing = false;
-
-    public $primaryKey = 'id';
+    use SoftDeletes;    
 
     /**
     * Table name.
@@ -30,10 +26,12 @@ class DaftarRetribusiModel extends Model
     * @var mixed
     */
     protected $fillable = [
-        'id',
-        'title',
-        'description',
-        'opd_id'
+        'uuid',
+        'nama',
+        'opd_id',
+        'opd_uuid',
+        'user_id',
+        'user_update',
     ];
 
     /**
@@ -46,5 +44,15 @@ class DaftarRetribusiModel extends Model
     public function getOpd()
     {
         return $this->belongsTo('Bantenprov\LaravelOpd\Models\LaravelOpdModel','opd_id');
+    }
+
+    public function getUserCreated()
+    {
+        return $this->belongsTo('App\User','user_id');
+    }
+
+    public function getUserUpdated()
+    {
+        return $this->belongsTo('App\User','user_update');
     }
 }

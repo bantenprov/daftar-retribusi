@@ -16,15 +16,11 @@
 						<form action="{{route('daftar-retribusi.update', $daftar_retribusi->id)}}" method="POST">
 							<input type="hidden" name="_method" value="PUT"> {{ csrf_field() }}
 							<div class="form-group">
-								<label for="title">Title</label>
-								<input type="text" value="{{$daftar_retribusi->title}}" class="form-control" id="taskTitle" name="title">
-							</div>
-							<div class="form-group">
-								<label for="description">Description</label>
-								<input type="text" value="{{$daftar_retribusi->description}}" class="form-control" id="taskDescription" name="description">
+								<label for="nama">Nama</label>
+								<input type="text" value="{{$daftar_retribusi->nama}}" class="form-control" id="taskNama" name="nama">
 							</div>
               <div class="form-group">
-                <label for="opd_id">Level Unit Kerja {{ $daftar_retribusi->getOpd->name }}</label>
+                <label for="opd_id">Unit Kerja {{ $daftar_retribusi->getOpd->name }}</label>
                 <select id="opd_id" name="opd_id" class="form-control form-control">
                   <option value="">Please select</option>
                   @foreach ($opds as $opd)

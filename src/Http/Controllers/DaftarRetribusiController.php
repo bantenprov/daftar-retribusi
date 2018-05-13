@@ -49,10 +49,9 @@ class DaftarRetribusiController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title'         => 'required|min:3',
-            'description'   => 'required',
-            'opd_id'        => 'required'
+        $request->validate([          
+            'nama'          => 'required',
+            'opd_id'        => 'required',
         ]);
 
         $opd = LaravelOpdModel::find($request->opd_id);
@@ -64,10 +63,12 @@ class DaftarRetribusiController extends Controller
 
         $daftar_retribusi = DaftarRetribusiModel::create(
                             [
-                                'id'            => Uuid::uuid5(Uuid::NAMESPACE_DNS, 'bantenprov.go.id'.date('YmdHis')),
-                                'title'         => $request->title,
-                                'description'   => $request->description,
-                                'opd_id'        => $request->opd_id
+                                'uuid'          => Uuid::uuid5(Uuid::NAMESPACE_DNS, 'bantenprov.go.id'.date('YmdHis')),
+                                'nama'          => $request->nama,
+                                'opd_id'        => $request->opd_id,
+                                'opd_uuid'      => $opd->uuid,
+                                'user_id'       => \Auth::user()->id,
+                                'user_update'   => \Auth::user()->id,
                             ]);
         
                             
@@ -112,9 +113,8 @@ class DaftarRetribusiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title'         => 'required|min:3',
-            'description'   => 'required',
-            'opd_id'        => 'required'
+            'nama'          => 'required',
+            'opd_id'        => 'required',
         ]);
 
         $opd = LaravelOpdModel::find($request->opd_id);
@@ -124,9 +124,11 @@ class DaftarRetribusiController extends Controller
         }
         
         $daftar_retribusi = DaftarRetribusiModel::find($id);
-        $daftar_retribusi->title        = $request->title;
-        $daftar_retribusi->description  = $request->description;
-        $daftar_retribusi->opd_id       = $request->opd_id;
+
+        $daftar_retribusi->nama          = $request->nama;
+        $daftar_retribusi->opd_id        = $request->opd_id;
+        $daftar_retribusi->opd_uuid      = $opd->uuid;
+        $daftar_retribusi->user_update   = \Auth::user()->id;
         $daftar_retribusi->save();
         
         return redirect()->route('daftar-retribusi.index')->with('message', 'Success update data.');
