@@ -10,21 +10,17 @@
         <hr>
         <div class="card">
           <div class="card-header">
-            Input <strong>Sizes</strong>
+            <strong>Daftar Retribusi</strong>
           </div>
           <div class="card-body">
            <form action="{{route('daftar-retribusi.store')}}" method="post">
              {{ csrf_field() }}
              <div class="form-group">
-              <label for="title">Title</label>
-              <input type="text" class="form-control" id="daftarRetribusiTitle"  name="title">
-            </div>
+              <label for="nama">Nama</label>
+              <input type="text" class="form-control" id="daftarRetribusiNama"  name="nama">
+            </div>            
             <div class="form-group">
-              <label for="description">Description</label>
-              <input type="text" class="form-control" id="daftarRetribusiDescription" name="description">
-            </div>
-            <div class="form-group">
-              <label for="opd_id">Level Unit Kerja</label>
+              <label for="opd_id">Unit Kerja</label>
               <select id="opd_id" name="opd_id" class="form-control form-control">
                 <option value="">Please select</option>
                 @foreach ($opds as $opd)
